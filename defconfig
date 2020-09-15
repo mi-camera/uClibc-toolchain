@@ -1,0 +1,4 @@
+BR2_arm=y
+BR2_cortex_a7=y
+BR2_PACKAGE_LIBEV=y
+BR2_PACKAGE_LIBEVDEV=y
