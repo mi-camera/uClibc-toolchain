@@ -33,8 +33,11 @@ jobs:
         prerelease: true
         artifacts: output/host
 
+    - name: 'Package output'
+      run: tar -cvf output.tar output/
+
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v1
       with:
         name: toolchain
-        path: output/host
+        path: output.tar
