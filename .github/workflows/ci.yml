@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build
-      run: make
+      run: make toolchain
         
     - name: Update latest tag
       if: env.isRelease == 'true'
@@ -31,10 +31,10 @@ jobs:
         allowUpdates: true
         replacesArtifacts: true
         prerelease: true
-        artifacts: output/
+        artifacts: output/host
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: output
-        path: output/
+        name: toolchain
+        path: output/host
