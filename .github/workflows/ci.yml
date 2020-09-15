@@ -33,18 +33,8 @@ jobs:
         prerelease: true
         artifacts: output/
 
-    - name: Update latest tag
-      if: env.isFinalRelease == 'true'
-      uses: ncipollo/release-action@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        tag: latest
-        allowUpdates: true
-        replacesArtifacts: true
-        artifacts: sdcard.zip
-
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: output.zip
+        name: output
         path: output/
