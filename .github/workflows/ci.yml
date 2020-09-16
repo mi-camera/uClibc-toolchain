@@ -21,7 +21,17 @@ jobs:
 
     - name: Build
       run: make toolchain
-        
+
+    - name: 'Package output'
+      run: tar -cvf output.tar output/
+
+    - name: Release
+      if: env.isRelease == 'true'
+      uses: ncipollo/release-action@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: output.tar
+
     - name: Update latest tag
       if: env.isRelease == 'true'
       uses: ncipollo/release-action@v1
@@ -31,10 +41,7 @@ jobs:
         allowUpdates: true
         replacesArtifacts: true
         prerelease: true
-        artifacts: output/host
-
-    - name: 'Package output'
-      run: tar -cvf output.tar output/
+        artifacts: output.tar
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v1
