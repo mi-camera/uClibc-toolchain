@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build
-      run: make toolchain
+      run: make
 
     - name: 'Package toolchain'
       run: tar -cvf toolchain.tar output/host/
@@ -40,7 +40,6 @@ jobs:
         tag: latest
         allowUpdates: true
         replacesArtifacts: true
-        prerelease: true
         artifacts: toolchain.tar
 
     - name: Upload Build Artifacts
